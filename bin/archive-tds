@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const ArchiveTDS = require("../lib/archivetds.js");
+
+let archiveTDS = new ArchiveTDS({ printErrors: true });
+
+console.log("archive-tds instantiation test");
