@@ -26,6 +26,7 @@
     "url": "https://github.com/reelyactive/archive-tds.git"
   },
   "dependencies": {
+    "express": "^4.21.0",
     "tedious": "^18.6.1"
   },
   "bugs": {
