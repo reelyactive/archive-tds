@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const http = require("http");
-const express = require("express");
-const bodyParser = require("body-parser");
-const ArchiveTDS = require("../lib/archivetds.js");
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const ArchiveTDS = require('../lib/archivetds.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -12,23 +12,23 @@ app.use(bodyParser.json());
 
 let server = http.createServer(app);
 server.listen(PORT, function () {
-  console.log("archive-tds: instance is listening on port", PORT);
+  console.log('archive-tds: Server is listening on port', PORT);
 });
 
 const options = {
   app: app,
   printErrors: true,
   config: {
-    server: process.env.TDS_SERVER || "127.0.0.1",
+    server: process.env.TDS_SERVER || '127.0.0.1',
     authentication: {
-      type: "default",
+      type: 'default',
       options: {
-        userName: process.env.TDS_USER || "admin",
-        password: process.env.TDS_PASSWORD || "admin",
+        userName: process.env.TDS_USER || 'admin',
+        password: process.env.TDS_PASSWORD || 'admin',
       },
     },
     options: {
-      database: process.env.TDS_DATABASE || "reelyactive",
+      database: process.env.TDS_DATABASE || 'reelyactive',
     },
   },
 };
