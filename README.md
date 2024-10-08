@@ -33,7 +33,7 @@ The following parameters can be used in the query string of the API call.
 | token             | The authorization token |
 | firstId           | The first `_storeId` to retrieve from the table |
 | lastId (optional) | The last `_storeId` to retrieve from the table |
-| maxRows           | The maximum number of rows to retrived |
+| maxRows (optional)      | The maximum number of rows to retrived |
 
 Example API call:
 
