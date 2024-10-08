@@ -1,8 +1,62 @@
 archive-tds
 ===========
 
-Retrieve historic IoT data from a SQL Server database using TDS.
+This script stand-alone from other `pareto-anywhere` related scripts.
 
+This runs an Express server with an API for retrieving archived IoT data from a SQL Server database using TDS.
+
+Getting Started
+------------
+
+The following environment variables can be set.
+
+| Environment Variable   | Description |
+:------------------------|:------------|
+| PORT                   | The port for this API |
+| ACCESS_TOKEN           | The authorization token |
+| TDS_SERVER             | The IP or domain to the MS SQL Server |
+| TDS_USER               | MS SQL username |
+| TDS_PASSWORD           | MS SQL password |
+
+Run the script with the following command.
+
+    npm start
+
+
+API Calls
+------------
+    /archive/dynamb
+
+The following parameters can be used in the query string of the API call.
+| Query Parameter   | Description |
+:-------------------|:------------|
+| token             | The authorization token |
+| firstId           | The first `_storeId` to retrieve from the table |
+| lastId (optional) | The last `_storeId` to retrieve from the table |
+| maxRows           | The maximum number of rows to retrived |
+
+Example API call:
+
+    http://localhost:3001/archive/dynamb?firstId=10&maxRows=25
+
+Returns: JSON with an array of the rows returned from the database.
+
+Example return:
+
+    [
+    {
+        "_storeId": 12,
+        "dynamb": "{"timestamp":1726518575439,"deviceId":"c300000ae8d8","deviceIdType":3,"batteryPercentage":100,"isMotionDetected":[true],"illuminance":465}"
+    },
+    {
+        "_storeId": 13,
+        "dynamb": "{"timestamp":1726518575767,"deviceId":"ac233faf5b98","deviceIdType":2,"batteryPercentage":100,"acceleration":[0.19921875,0.1171875,1.0078125],"isMotionDetected":[true]}"
+    },
+    {
+        "_storeId": 14,
+        "dynamb": "{"timestamp":1726518579211,"deviceId":"c300000ae8d8","deviceIdType":3,"batteryPercentage":100,"temperature":26.46875,"relativeHumidity":57.58984375,"isMotionDetected":[true],"illuminance":465}"
+    }
+    ]
 
 Contributing
 ------------
